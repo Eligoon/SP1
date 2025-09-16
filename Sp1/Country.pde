@@ -4,10 +4,10 @@ class Country
   String name;
   PImage flag;
 
-  Country (String name, PImage flag)
+  Country (String name, String imagePath)
   {
     this.name = name;
-    this.flag = flag;
+    this.flag = loadImage(imagePath);
   }
 
   String getName()
