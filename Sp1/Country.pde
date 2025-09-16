@@ -1,7 +1,7 @@
 class Country 
 {
-  String name;
-  PImage flag;
+  String name;     // Country name
+  PImage flag;     // Country flag image
 
   Country(String name, PImage flag) 
   {
@@ -9,24 +9,28 @@ class Country
     this.flag = flag;
   }
 
+  // Display the country as a box with flag and name
   void display(float x, float y, float w, float h, color stripeColor) 
   {
-    // Background
+    // Removes the default black outlines
+    noStroke(); 
+    
+    // Draw white background box
     fill(255);
     rect(x, y, w, h);
 
-    // Right stripe
+    // Draw stripe on the right side
     fill(stripeColor);
     rect(x + w - 10, y, 10, h);
 
-    // Flag
-    float flagW = h * 1.2;
-    float flagH = h * 0.8;
+    // Draw flag image
+    float flagW = h * 1.8;
+    float flagH = h;
     float flagX = x + 10;
     float flagY = y + (h - flagH) / 2;
     image(flag, flagX, flagY, flagW, flagH);
 
-    // Name
+    // Draw country name to the right of the flag
     fill(0);
     textAlign(LEFT, CENTER);
     textSize(16);

@@ -2,11 +2,12 @@ import java.util.*;
 
 class Group
 {
-  String groupName;
-  List<Country> countries;
-  color stripeColor;
-  color groupColor;
+  String groupName;           // Name of the group (e.g., GROUP A)
+  List<Country> countries;    // List of countries in the group
+  color stripeColor;          // Color of stripe beside each country box
+  color groupColor;           // Color used for group title text
 
+  // Constructor initializes group with name and colors
   Group(String name, color stripeColor, color groupColor)
   {
     this.groupName = name;
@@ -15,19 +16,22 @@ class Group
     this.groupColor = groupColor;
   }
 
+  // Add a country to the group
   void addCountry(Country country)
   {
     countries.add(country);
   }
 
+  // Display the group title and each country inside it
   void display(float x, float y, float w, float h, float spacing)
   {
-    // Header
+    // Draw group name as a header
     fill(groupColor);
     textAlign(CENTER, CENTER);
     textSize(18);
     text(groupName, x + w / 2, y + 20);
 
+    // Draw each country, stacked vertically
     float cy = y + 40;
     for (Country c : countries)
     {
