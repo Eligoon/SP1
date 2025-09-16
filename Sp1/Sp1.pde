@@ -1,4 +1,4 @@
-// Yellow color RGB: 229 223 32
+// Yellow color RGB: 229 223 0
 // Teal color RGB: 16 202 236
 
 // Declare a global list to hold all the groups
@@ -13,7 +13,7 @@ void setup()
   // Set the font for drawing text
   textFont(createFont("Arial Bold", 16));
 
-  // === Load country flag images from the "data" folder ===
+  // Load country flag images from the "data" folder
   // Group A flags
   PImage russia = loadImage("Russia.png");
   PImage saudi = loadImage("SaudiArabia.png");
@@ -38,7 +38,7 @@ void setup()
   PImage croatia = loadImage("Croatia.png");
   PImage nigeria = loadImage("Nigeria.png");
 
-  // === Create Groups and add Countries to each ===
+  // Create Groups and add Countries to each 
 
   // Group A: light blue stripe
   Group groupA = new Group("GROUP A", color(16, 202, 236), color(16, 202, 236));
