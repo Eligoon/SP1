@@ -1,29 +1,35 @@
-class Country {
+class Country 
+{
   String name;
   PImage flag;
 
-  Country(String name, PImage flag) {
+  Country(String name, PImage flag) 
+  {
     this.name = name;
     this.flag = flag;
   }
 
-  void display(float x, float y, float w, float h) {
+  void display(float x, float y, float w, float h, color stripeColor) 
+  {
+    // Background
     fill(255);
     rect(x, y, w, h);
 
-    float flagWidth = h * 0.8;
-    float flagHeight = h * 0.8;
-    float flagX = x + 10;
-    float flagY = y + (h - flagHeight) / 2;
-    image(flag, flagX, flagY, flagWidth, flagHeight);
+    // Right stripe
+    fill(stripeColor);
+    rect(x + w - 10, y, 10, h);
 
-    // Country name to right of flag
+    // Flag
+    float flagW = h * 1.2;
+    float flagH = h * 0.8;
+    float flagX = x + 10;
+    float flagY = y + (h - flagH) / 2;
+    image(flag, flagX, flagY, flagW, flagH);
+
+    // Name
     fill(0);
     textAlign(LEFT, CENTER);
     textSize(16);
-
-    float textX = flagX + flagWidth + 10;
-    float textY = y + h / 2;
-    text(name, textX, textY);
+    text(name.toUpperCase(), flagX + flagW + 15, y + h / 2);
   }
 }

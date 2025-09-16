@@ -3,92 +3,87 @@
 
 List<Group> groups = new ArrayList<Group>();
 
-void setup() {
-  size(1200, 700);
+void setup()
+{
+  size(1000, 600);
+  background(32, 51, 79);
+  textFont(createFont("Arial Bold", 16));
 
-  // Load flags - make sure you have these images in your data folder!
-  PImage argentina = loadImage("Argentina.png");
-  PImage australia = loadImage("Australia.png");
-  PImage croatia = loadImage("Croatia.png");
-  PImage denmark = loadImage("Denmark.png");
-  PImage egypt = loadImage("Egypt.png");
-  PImage france = loadImage("France.png");
-  PImage iceland = loadImage("Iceland.png");
-  PImage iran = loadImage("Iran.png");
-  PImage morocco = loadImage("Morocco.png");
-  PImage nigeria = loadImage("Nigeria.png");
-  PImage peru = loadImage("Peru.png");
-  PImage portugal = loadImage("Portugal.png");
+  // Load all flags — make sure to place these images in the "data" folder
   PImage russia = loadImage("Russia.png");
-  PImage saudiArabia = loadImage("SaudiArabia.png");
-  PImage spain = loadImage("Spain.png");
+  PImage saudi = loadImage("SaudiArabia.png");
+  PImage egypt = loadImage("Egypt.png");
   PImage uruguay = loadImage("Uruguay.png");
 
-  // Create countries
-  Country cArgentina = new Country("Argentina", argentina);
-  Country cAustralia = new Country("Australia", australia);
-  Country cCroatia = new Country("Croatia", croatia);
-  Country cDenmark = new Country("Denmark", denmark);
-  Country cEgypt = new Country("Egypt", egypt);
-  Country cFrance = new Country("France", france);
-  Country cIceland = new Country("Iceland", iceland);
-  Country cIran = new Country("Iran", iran);
-  Country cMorocco = new Country("Morocco", morocco);
-  Country cNigeria = new Country("Nigeria", nigeria);
-  Country cPeru = new Country("Peru", peru);
-  Country cPortugal = new Country("Portugal", portugal);
-  Country cRussia = new Country("Russia", russia);
-  Country cSaudiArabia = new Country("SaudiArabia", saudiArabia);
-  Country cSpain = new Country("Spain", spain);
-  Country cUruguay = new Country("Uruguay", uruguay);
+  PImage portugal = loadImage("Portugal.png");
+  PImage spain = loadImage("Spain.png");
+  PImage morocco = loadImage("Morocco.png");
+  PImage iran = loadImage("Iran.png");
 
-  // Create groups A, B, C, D
-  Group groupA = new Group("Group A");
-  Group groupB = new Group("Group B");
-  Group groupC = new Group("Group C");
-  Group groupD = new Group("Group D");
+  PImage france = loadImage("France.png");
+  PImage australia = loadImage("Australia.png");
+  PImage peru = loadImage("Peru.png");
+  PImage denmark = loadImage("Denmark.png");
 
-  // Distribute countries evenly (4 per group)
-  groupA.addCountry(cArgentina);
-  groupA.addCountry(cAustralia);
-  groupA.addCountry(cCroatia);
-  groupA.addCountry(cDenmark);
+  PImage argentina = loadImage("Argentina.png");
+  PImage iceland = loadImage("Iceland.png");
+  PImage croatia = loadImage("Croatia.png");
+  PImage nigeria = loadImage("Nigeria.png");
 
-  groupB.addCountry(cEgypt);
-  groupB.addCountry(cFrance);
-  groupB.addCountry(cIceland);
-  groupB.addCountry(cIran);
+  // Group A
+  Group groupA = new Group("GROUP A", color(16, 202, 236), color(16, 202, 236));
+  groupA.addCountry(new Country("Russia", russia));
+  groupA.addCountry(new Country("Saudi Arabia", saudi));
+  groupA.addCountry(new Country("Egypt", egypt));
+  groupA.addCountry(new Country("Uruguay", uruguay));
 
-  groupC.addCountry(cMorocco);
-  groupC.addCountry(cNigeria);
-  groupC.addCountry(cPeru);
-  groupC.addCountry(cPortugal);
+  // Group B
+  Group groupB = new Group("GROUP B", color(229, 223, 32), color(229, 223, 32));
+  groupB.addCountry(new Country("Portugal", portugal));
+  groupB.addCountry(new Country("Spain", spain));
+  groupB.addCountry(new Country("Morocco", morocco));
+  groupB.addCountry(new Country("Iran", iran));
 
-  groupD.addCountry(cRussia);
-  groupD.addCountry(cSaudiArabia);
-  groupD.addCountry(cSpain);
-  groupD.addCountry(cUruguay);
+  // Group C
+  Group groupC = new Group("GROUP C", color(16, 202, 236), color(16, 202, 236));
+  groupC.addCountry(new Country("France", france));
+  groupC.addCountry(new Country("Australia", australia));
+  groupC.addCountry(new Country("Peru", peru));
+  groupC.addCountry(new Country("Denmark", denmark));
 
-  // Add groups to global list
+  // Group D
+  Group groupD = new Group("GROUP D", color(229, 223, 32), color(229, 223, 32));
+  groupD.addCountry(new Country("Argentina", argentina));
+  groupD.addCountry(new Country("Iceland", iceland));
+  groupD.addCountry(new Country("Croatia", croatia));
+  groupD.addCountry(new Country("Nigeria", nigeria));
+
+  // Add to list
   groups.add(groupA);
   groups.add(groupB);
   groups.add(groupC);
   groups.add(groupD);
 }
 
-void draw() {
+void draw()
+{
   background(32, 51, 79);
 
-  float x = 50;
-  float y = 50;
-  float boxWidth = (width - 250) / 4;  // space for 4 groups with margins
-  float boxHeight = 80;
-  float spacing = 10;
+  float boxW = 400;
+  float boxH = 40;
+  float spacing = 5;
 
-  // Display groups side by side
-  for (int i = 0; i < groups.size(); i++) {
-    Group g = groups.get(i);
-    float groupX = x + i * (boxWidth + 50);
-    g.display(groupX, y, boxWidth, boxHeight, spacing);
-  }
+  float leftX = 50;
+  float rightX = width / 2 + 30;
+
+  float topY = 50;
+  float midY = 350;
+
+  // Left column (A, B)
+  groups.get(0).display(leftX, topY, boxW, boxH, spacing);
+  groups.get(1).display(leftX, midY, boxW, boxH, spacing);
+
+  // Right column (C, D)
+  groups.get(2).display(rightX, topY, boxW, boxH, spacing);
+  groups.get(3).display(rightX, midY, boxW, boxH, spacing);
 }
