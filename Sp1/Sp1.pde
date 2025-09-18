@@ -4,6 +4,10 @@
 // Declare a global list to hold all the groups
 List<Group> groups = new ArrayList<Group>();
 
+color targetColor = 0;
+color currentColor = 0;
+float amount = 0;
+
 void setup()
 {
   // Set canvas size and background color
@@ -77,12 +81,21 @@ void setup()
 
 void draw()
 {
-  // Clear the screen each frame with background color
-  background(32, 51, 79);
+  // original backgroudn color 32, 51, 79
+  // Clear the screen each frame with background color and change color
+    if (random(1) < 0.01) {
+    currentColor = lerpColor(currentColor, targetColor, amount);
+    targetColor = color(random(32,50), random(51,85), random(79,140));
+    amount = 0;
+  }
+  if (amount < 1) {
+    amount += 0.01;
+  }
+    background((lerpColor(currentColor, targetColor, amount)));
 
   // Draw the white line going down the middle
   fill(255);
-  rect(width - 10, 0, 5, height); //FIX THIS
+  rect(width / 2 - 15, 0, 5, height);
 
   // Dimensions for each country display box
   float boxW = 400;
