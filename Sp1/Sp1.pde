@@ -38,9 +38,9 @@ void setup()
   PImage croatia = loadImage("Croatia.png");
   PImage nigeria = loadImage("Nigeria.png");
 
-  // Create Groups and add Countries to each 
+  // Create Groups and add Countries to each
 
-  // Group A: light blue stripe
+  // Group A: teal stripe
   Group groupA = new Group("GROUP A", color(16, 202, 236), color(16, 202, 236));
   groupA.addCountry(new Country("Russia", russia));
   groupA.addCountry(new Country("Saudi Arabia", saudi));
@@ -54,7 +54,7 @@ void setup()
   groupB.addCountry(new Country("Morocco", morocco));
   groupB.addCountry(new Country("Iran", iran));
 
-  // Group C: light blue stripe
+  // Group C: teal stripe
   Group groupC = new Group("GROUP C", color(16, 202, 236), color(16, 202, 236));
   groupC.addCountry(new Country("France", france));
   groupC.addCountry(new Country("Australia", australia));
@@ -79,6 +79,10 @@ void draw()
 {
   // Clear the screen each frame with background color
   background(32, 51, 79);
+
+  // Draw the white line going down the middle
+  fill(255);
+  rect(width - 10, 0, 5, height); //FIX THIS
 
   // Dimensions for each country display box
   float boxW = 400;

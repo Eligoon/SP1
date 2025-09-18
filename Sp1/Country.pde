@@ -26,7 +26,7 @@ class Country
     // Draw flag image
     float flagW = h * 1.8;
     float flagH = h;
-    float flagX = x + 10;
+    float flagX = x;
     float flagY = y + (h - flagH) / 2;
     image(flag, flagX, flagY, flagW, flagH);
 
