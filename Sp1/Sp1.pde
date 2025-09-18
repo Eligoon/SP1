@@ -4,9 +4,8 @@
 // Declare a global list to hold all the groups
 List<Group> groups = new ArrayList<Group>();
 
-color targetColor = 0;
-color currentColor = 0;
-float amount = 0;
+// Declare the class for radialgradient for the color change
+RadialGradient radialGradient;
 
 void setup()
 {
@@ -77,21 +76,22 @@ void setup()
   groups.add(groupB);
   groups.add(groupC);
   groups.add(groupD);
+
+  float cx = width / 2;
+  float cy = height / 2;
+  float maxRadius = dist(0, 0, cx, cy);
+  radialGradient = new RadialGradient(cx, cy, maxRadius, color(16, 202, 236), color(229, 223, 0), 0.01, 100);
 }
 
 void draw()
 {
-  // original backgroudn color 32, 51, 79
+  // original background color 32, 51, 79
   // Clear the screen each frame with background color and change color
-    if (random(1) < 0.01) {
-    currentColor = lerpColor(currentColor, targetColor, amount);
-    targetColor = color(random(32,50), random(51,85), random(79,140));
-    amount = 0;
-  }
-  if (amount < 1) {
-    amount += 0.01;
-  }
-    background((lerpColor(currentColor, targetColor, amount)));
+  background(32, 51, 79);
+
+  // update and draw radial gradient
+  radialGradient.update();
+  radialGradient.display();
 
   // Draw the white line going down the middle
   fill(255);
